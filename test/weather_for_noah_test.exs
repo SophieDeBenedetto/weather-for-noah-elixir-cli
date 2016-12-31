@@ -1,0 +1,8 @@
+defmodule WeatherForNoahTest do
+  use ExUnit.Case
+  doctest WeatherForNoah
+
+  test "the truth" do
+    assert 1 + 1 == 2
+  end
+end
