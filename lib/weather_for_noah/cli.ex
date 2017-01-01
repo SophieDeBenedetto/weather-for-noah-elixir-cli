@@ -51,7 +51,7 @@ defmodule WeatherForNoah.CLI do
     # will need condition in Api for invalid location with error message outputting and system halt
     # eventually would be cool to get it to restart using supervisors?
     WeatherForNoah.Api.fetch(location)
-    |> WeatherForNoah.Parser.parse
+    |> WeatherForNoah.Parser.parse_response
     # analyzer will map weather with outfits. pattern matching!
     |> WeatherForNoah.Analyzer.analyze 
     |> WeatherForNoah.ResultFormatter.output_report
