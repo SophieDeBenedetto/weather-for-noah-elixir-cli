@@ -16,8 +16,10 @@ defmodule WeatherForNoah.Parser do
   end
 
   def map_report_values(report) do 
-    %{"main" => %{"temp_min" => temp_min, "temp_max" => temp_max}} = report
-    %{"weather" => [%{"description" => description, "main" => main}]} = report
-    %WeatherForNoah.Report{temp_min: temp_min, temp_max: temp_max, description: description, main: main}
+    %{"current_observation" => %{"temp_f" => temp_min, "weather" => main}} = report
+    [%{"fcttext" => description} | _] = report["forecast"]["txt_forecast"]["forecastday"]
+    # %{"main" => %{"temp_min" => temp_min, "temp_max" => temp_max}} = report
+    # %{"weather" => [%{"description" => description, "main" => main} | _]} = report
+    %WeatherForNoah.Report{temp_min: temp_min, description: description, main: main}
   end
 end

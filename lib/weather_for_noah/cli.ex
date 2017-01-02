@@ -10,7 +10,6 @@ defmodule WeatherForNoah.CLI do
   def parse_args(args) do 
     parse = OptionParser.parse(args, switches: [help: :boolean],
                                      aliases: [h: :help])
-    IO.inspect parse
     case parse do 
       {[help: true], _, _} -> :help
       {_, ["start"], _} -> :start
@@ -43,16 +42,13 @@ defmodule WeatherForNoah.CLI do
       {:error, reason} -> 
         IO.puts "Error #{reason}"
         get_location
-      data -> data
+      data -> String.split(data, ", ")
     end
   end
 
   def process(location) do
-    # will need condition in Api for invalid location with error message outputting and system halt
-    # eventually would be cool to get it to restart using supervisors?
     WeatherForNoah.Api.fetch(location)
     |> WeatherForNoah.Parser.parse_response
-    # analyzer will map weather with outfits. pattern matching!
     |> WeatherForNoah.Analyzer.analyze 
     |> WeatherForNoah.ResultFormatter.output_report
   end

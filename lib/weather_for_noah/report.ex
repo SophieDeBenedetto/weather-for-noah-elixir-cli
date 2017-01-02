@@ -1,3 +1,3 @@
 defmodule WeatherForNoah.Report do 
-  defstruct temp_min: "", temp_max: "", description: "", main: ""
+  defstruct temp_min: "", description: "", main: ""
 end
