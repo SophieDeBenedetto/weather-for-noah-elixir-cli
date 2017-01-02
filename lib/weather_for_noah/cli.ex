@@ -1,5 +1,3 @@
-require IEx;
-
 defmodule WeatherForNoah.CLI do 
   def main(argv) do 
     argv

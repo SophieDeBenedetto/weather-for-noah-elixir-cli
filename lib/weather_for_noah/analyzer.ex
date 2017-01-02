@@ -1,4 +1,3 @@
-require IEx;
 defmodule WeatherForNoah.Analyzer do 
   
   def analyze(report = %{main: "Rain", temp_min:  temp_min, description: description}) 
